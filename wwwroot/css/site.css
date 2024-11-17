@@ -1,0 +1,87 @@
+<style >
+/* Set up the animated background */
+body {
+    background-color: #495057;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* Create the green dot elements */
+.dot {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #00ff00;
+    border-radius: 50%;
+    animation: moveDots 10s linear infinite;
+}
+
+/* Animation to move the dots */
+@keyframes moveDots {
+    0% {
+        transform: translateY(0) translateX(0);
+    }
+
+    50% {
+        transform: translateY(200px) translateX(100px);
+    }
+
+    100% {
+        transform: translateY(0) translateX(0);
+    }
+}
+
+/* Positioning multiple dots randomly */
+.dot:nth-child(1) {
+    top: 20%;
+    left: 10%;
+    animation-duration: 12s;
+}
+
+.dot:nth-child(2) {
+    top: 40%;
+    left: 60%;
+    animation-duration: 9s;
+}
+
+.dot:nth-child(3) {
+    top: 80%;
+    left: 30%;
+    animation-duration: 10s;
+}
+
+.dot:nth-child(4) {
+    top: 50%;
+    left: 80%;
+    animation-duration: 11s;
+}
+
+.dot:nth-child(5) {
+    top: 30%;
+    left: 90%;
+    animation-duration: 8s;
+}
+
+.dot:nth-child(6) {
+    top: 60%;
+    left: 20%;
+    animation-duration: 14s;
+}
+
+/* Styling the login form container */
+.login-container {
+    max-width: 400px;
+    z-index: 10;
+}
+
+.card {
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+</style >
