@@ -1,0 +1,11 @@
+﻿
+@model List<Admin>
+
+<form method="post">
+	<input type="hidden" name="admin_Id" value="@Model[0].admin_Id" />
+	<input type="name" name="admin_Name" value="@Model[0].admin_Name" />
+	<input type="name" name="admin_Email" value="@Model[0].admin_Email" />
+	<input type="name" name="admin_Password" value="@Model[0].admin_Password" />
+	<input type="name" name="admin_Image" value="@Model[0].admin_Image" />
+	<input type="submit" class="form-control"  value="Update Profile" class="form-control"  />
+</form>

@@ -35,6 +35,7 @@ namespace ecom.Controllers
             var row = _context.tbl_admin.FirstOrDefault(x=>x.admin_Email== adminEmail);
             if (row != null && row.admin_Password==adminPassword) 
             {
+                ViewBag.name = row.admin_Name;
                 HttpContext.Session.SetString("admin_session", row.admin_Id.ToString());
                 return RedirectToAction("Index");
                 
@@ -42,13 +43,28 @@ namespace ecom.Controllers
             else
             {
                 ViewBag.message = "incorrect name and password";
+              
                 return View();
             }
         }
         public IActionResult Logout()
         {
             HttpContext.Session.Remove("admin_session");
-            return View();
+            return RedirectToAction("login");
+        }
+       
+        public IActionResult Profile()
+        {
+            var adminID = HttpContext.Session.GetString("admin_session");
+            var row= _context.tbl_admin.Where(a=>a.admin_Id== int.Parse(adminID)).ToList();
+            return View(row);
+        }
+        [HttpPost]
+        public IActionResult Profile(Admin admin)
+        {
+            _context.tbl_admin.Update(admin);
+            _context.SaveChanges();
+            return RedirectToAction("Profile");
         }
     }
 }
