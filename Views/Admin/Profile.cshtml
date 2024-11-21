@@ -1,11 +1,36 @@
-﻿
-@model List<Admin>
+﻿@model List<Admin>
 
-<form method="post">
-	<input type="hidden" name="admin_Id" value="@Model[0].admin_Id" />
-	<input type="name" name="admin_Name" value="@Model[0].admin_Name" />
-	<input type="name" name="admin_Email" value="@Model[0].admin_Email" />
-	<input type="name" name="admin_Password" value="@Model[0].admin_Password" />
-	<input type="name" name="admin_Image" value="@Model[0].admin_Image" />
-	<input type="submit" class="form-control"  value="Update Profile" class="form-control"  />
+<form method="post" style="padding: 20px; background-color: #f9f9f9; border: 1px solid #ddd; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+    <input type="hidden" name="admin_Id" value="@Model[0].admin_Id" />
+
+    <label for="admin_Name" style="font-weight: bold; margin-bottom: 5px; display: block;">Name</label>
+    <input type="text" name="admin_Name" value="@Model[0].admin_Name" style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 5px; box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);" />
+
+    <label for="admin_Email" style="font-weight: bold; margin-bottom: 5px; display: block;">Email</label>
+    <input type="text" name="admin_Email" value="@Model[0].admin_Email" style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 5px; box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);" />
+
+    <label for="admin_Password" style="font-weight: bold; margin-bottom: 5px; display: block;">Password</label>
+    <input type="password" name="admin_Password" value="@Model[0].admin_Password" style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 5px; box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);" />
+
+    <input type="hidden" name="admin_Image" value="@Model[0].admin_Image" />
+
+    <input type="submit" class="form-control" value="Update Profile" style="width: 100%; background-color: #007bff; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;" />
+</form>
+
+<br />
+<form method="post" asp-action="ChangeProfileImage" enctype="multipart/form-data" style="padding: 20px; background-color: #f9f9f9; border: 1px solid #ddd; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+    <input type="hidden" name="admin_Id" value="@Model[0].admin_Id" />
+    <input type="hidden" name="admin_Name" value="@Model[0].admin_Name" />
+    <input type="hidden" name="admin_Email" value="@Model[0].admin_Email" />
+    <input type="hidden" name="admin_Password" value="@Model[0].admin_Password" />
+
+    <label for="admin_image" style="font-weight: bold; margin-bottom: 5px; display: block;">Upload New Profile Image</label>
+    <input type="file" name="admin_image" value="" style="margin-bottom: 15px; width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;" />
+
+    <img src="@("~/admin_image/" + Model[0].admin_Image)"
+         alt="Alternate Text"
+         asp-append-version="true"
+         style="height: 200px; width: 200px; border-radius: 50%; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); margin: 10px auto; display: block; object-fit: cover; border: 2px solid #007bff;" />
+
+    <input type="submit" value="Change" style="width: 100%; background-color: #28a745; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;" />
 </form>

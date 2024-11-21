@@ -8,9 +8,12 @@ namespace ecom.Controllers
     {
         private MyContext _context;
 
-        public AdminController(MyContext context)
+        private IWebHostEnvironment _environment;
+
+        public AdminController(MyContext context, IWebHostEnvironment environment)
         {
             _context = context;
+            _environment = environment;
         }
 
         public IActionResult Index()
@@ -66,5 +69,17 @@ namespace ecom.Controllers
             _context.SaveChanges();
             return RedirectToAction("Profile");
         }
+        [HttpPost]
+        public IActionResult ChangeProfileImage(IFormFile admin_image, Admin admin)
+        {
+            string ImagePath = Path.Combine(_environment.WebRootPath,"admin_image", admin_image.FileName);
+            FileStream fs=new FileStream(ImagePath, FileMode.Create);
+            admin_image.CopyTo(fs);
+            admin.admin_Image = admin_image.FileName;
+			_context.tbl_admin.Update(admin);
+			_context.SaveChanges();
+			return RedirectToAction("Profile");
+
+		}
     }
 }
