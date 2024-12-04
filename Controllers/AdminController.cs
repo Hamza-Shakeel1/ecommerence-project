@@ -108,6 +108,11 @@ namespace ecom.Controllers
             return RedirectToAction("FetchCustomer");
 
         }
+        public IActionResult DeleteConfirm(int id)
+        {
+			var Detail_Page = _context.tbl_customer.FirstOrDefault(a => a.Customer_Id == id);
+			return View(Detail_Page);
+		}
         public IActionResult DeleteCustomer(int id)
         {
             var customer_id = _context.tbl_customer.Find(id);

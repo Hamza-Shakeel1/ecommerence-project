@@ -1,0 +1,16 @@
+﻿@model Customer
+<div style="border :2px solid black">
+
+	<h4>@Model.Customer_Id</h4>
+	<h4>@Model.Customer_Name</h4>
+	<h4>@Model.Customer_Email</h4>
+	<h4>@Model.Customer_Password</h4>
+	<h4>@Model.Customer_Gender</h4>
+	<h4>@Model.Customer_City</h4>
+	<h4>@Model.Customer_Country</h4>
+	<div>
+	<img src="@Url.Content("~/Customer_Image/" + Model.Customer_Image)" asp-append-version="true" style="border: 2px solid black;" width="350px" height="250px" alt="Alternate Text" />
+	</div>
+	<a href="@Url.Action("DeleteConfirm","Admin")" class=" btn btn-danger"> Delete</a>
+	<a href="@Url.Action("FetchCustomer","Admin")" class="btn btn-success bg-dark">Back To List</a>
+</div>
