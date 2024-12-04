@@ -81,5 +81,38 @@ namespace ecom.Controllers
 			return RedirectToAction("Profile");
 
 		}
-    }
+        public IActionResult FetchCustomer()
+        {
+            var cust_detail = _context.tbl_customer.ToList();
+            return View(cust_detail);
+        }
+        public IActionResult CustomerDetail( int id)
+        {
+            var Detail_Page = _context.tbl_customer.FirstOrDefault( a=> a.Customer_Id== id);
+            return View( Detail_Page);
+        }
+        public IActionResult UpdateCustomer(int id) 
+        {
+            return View(_context.tbl_customer.Find(id));
+        }
+        
+        [HttpPost]
+        public IActionResult UpdateCustomer(Customer customer , IFormFile Customer_Image) 
+        {
+            var PATH = Path.Combine(_environment.WebRootPath, "Customer_Image", Customer_Image.FileName);
+            FileStream fs= new FileStream(PATH, FileMode.Create);
+            Customer_Image.CopyTo(fs);
+            customer.Customer_Image=Customer_Image.FileName;
+            _context.tbl_customer.Update(customer);
+            _context.SaveChanges();
+            return RedirectToAction("FetchCustomer");
+
+        }
+        public IActionResult DeleteCustomer(int id)
+        {
+            var customer_id = _context.tbl_customer.Find(id);
+            _context.tbl_customer.Remove(customer_id);
+            return RedirectToAction("FetchCustomer");
+        }
+	}
 }

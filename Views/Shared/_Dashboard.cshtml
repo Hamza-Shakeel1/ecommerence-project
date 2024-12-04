@@ -45,11 +45,9 @@
                 <li class="nav-item">
                     <a class="nav-link text-white" href="@Url.Action("Profile","Admin")">Profile</a>
                 </li>
+               
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="#">Staff</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="#">Customers</a>
+                    <a class="nav-link text-white" href="@Url.Action("FetchCustomer","Admin")">Customers</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-white" href="#">Categories</a>
@@ -67,10 +65,8 @@
         </div>
 
         <!-- Main Content -->
-        <div class="container-fluid p-4" style="margin-left: 250px;">
-            <h1>Dashboard Overview</h1>
-            <h5>@ViewBag.name</h5>
-            <p>Welcome to your e-commerce dashboard. Select a section from the side menu to manage your store.</p>
+        <div class="container-fluid" style="">
+            
             <div>
                 @RenderBody()
             </div>

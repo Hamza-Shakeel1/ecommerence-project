@@ -1,0 +1,48 @@
+﻿
+.customer-table
+
+{
+    width: 100%;
+    border-collapse: collapse;
+  
+    font-size: 18px;
+    text-align: left;
+}
+
+/* Table header */
+.customer-table th {
+    background-color: #f4f4f4;
+    color: #333;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+/* Table rows */
+.customer-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+/* Alternate row colors */
+.customer-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.customer-table tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+/* Hover effect for rows */
+.customer-table tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+/* Header style */
+h2 {
+    font-family: Arial, sans-serif;
+    color: #444;
+    margin-bottom: 10px;
+    text-align: center;
+}
+

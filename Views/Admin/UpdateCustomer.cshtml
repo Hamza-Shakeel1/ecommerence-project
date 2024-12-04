@@ -1,0 +1,34 @@
+﻿@model Customer
+<form  method="post" enctype="multipart/form-data">
+	<div>
+		<input type="hidden" name="Customer_Id" value="@Model.Customer_Id" />
+	</div>
+	<div>
+		<input type="text" name="Customer_Name" value="@Model.Customer_Name" />
+	</div>
+	<div>
+		<input type="text" name="Customer_Phone" value="@Model.Customer_Phone" />
+	</div>
+	<div>
+		<input type="email" name="Customer_Email" value="@Model.Customer_Email" />
+	</div>
+	<div>
+		<input type="text" name="Customer_Password" value="@Model.Customer_Password" />
+	</div>
+	<div>
+		<input type="text" name="Customer_Gender" value="@Model.Customer_Gender" />
+	</div>
+	<div>
+		<input type="text" name="Customer_City" value="@Model.Customer_City" />
+	</div>
+	<div>
+		<input type="text" name="Customer_Country" value="@Model.Customer_Country" />
+	</div>
+	<div>
+		<input type="text" name="Customer_Address" value="@Model.Customer_Address" />
+	</div>
+	<div>
+		<input type="file" name="Customer_Image" value="@Model.Customer_Image" />
+	</div>
+	<input type="submit" value="Update Customer" class="form-control my-3 btn btn-primary" />
+</form>

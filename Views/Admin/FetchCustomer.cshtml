@@ -1,0 +1,32 @@
+﻿@model List<Customer>
+<link href="~/css/customer.css" rel="stylesheet" />
+<table>
+    <thead>
+    <th>Customer_Id</th>
+    <th>Customer_Name</th>
+    <th>Customer_Phone</th>
+    <th>Customer_Email</th> 
+    <th>Customer_City</th>
+    <th>Customer_Address</th>
+    <th>Options</th>
+    </thead>
+    <tbody>
+    @foreach(var custom in Model)
+    {
+        <tr>
+            <td>@custom.Customer_Id</td>
+            <td>@custom.Customer_Name</td>
+            <td>@custom.Customer_Phone</td>
+            <td>@custom.Customer_Email</td>
+            <td>@custom.Customer_City</td>
+            <td>@custom.Customer_Address</td>
+            <td>
+                    <a href="@Url.Action("CustomerDetail","Admin",new{id=@custom.Customer_Id})" class="btn btn-primary">Detail</a>
+                    <a href="@Url.Action("UpdateCustomer","Admin",new{id=@custom.Customer_Id})" class="btn btn-success">Edit</a>
+                    <a href="@Url.Action("DeleteCustomer","Admin",new{id=@custom.Customer_Id})" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+            
+    }
+    </tbody>
+</table>
