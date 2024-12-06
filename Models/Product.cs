@@ -12,5 +12,6 @@ namespace ecom.Models
         public string Product_Description { get; set; }
         public string Product_Image { get; set; }
         public int Cart_Id { get; set; }
+        public Category Category { get; set; }
     }
 }

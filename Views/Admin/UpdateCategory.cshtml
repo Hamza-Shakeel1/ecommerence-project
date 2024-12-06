@@ -1,0 +1,8 @@
+﻿@model Category
+<form method="post">
+    <input type="hidden" name="category_Id" value="@Model.category_Id" />
+    <div>
+        <input type="text" name="Category_Name" value="@Model.Category_Name" />
+    </div>
+    <input type="submit" value="Update Category" class="form-control my-3 btn btn-primary" />
+</form>

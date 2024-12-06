@@ -1,0 +1,24 @@
+﻿
+<div class="container ">
+	<h1>Add Category</h1>
+	<div class="row row-cols-6">
+		<form method="post" enctype="multipart/form-data">
+
+			<div>
+				<input type="text" name="Product_Name" class="form-control" style="margin-top:20px" placeholder="product name" />
+			</div>
+			<div>
+				<input type="text" name="Product_Price" class="form-control" style="margin-top:20px" placeholder="product price" />
+			</div>
+			<div>
+				<input type="text" name="Product_Description" class="form-control" style="margin-top:20px" placeholder="Descripton" />
+			</div>
+			<div>
+				<input type="file" name="Product_Image" class="form-control"/>
+			</div>
+
+			@Html.Partial("CategoryDropDown", ViewData["category"])
+			<input type="submit" value="Add Product" class="form-control my-3 btn btn-primary" />
+		</form>
+	</div>
+</div>

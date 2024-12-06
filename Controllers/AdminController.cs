@@ -119,5 +119,76 @@ namespace ecom.Controllers
             _context.tbl_customer.Remove(customer_id);
             return RedirectToAction("FetchCustomer");
         }
-	}
+
+
+
+        //Working for Category
+        public IActionResult FetchCategory()
+        {
+            return View(_context.tbl_categories.ToList());
+        }
+        public IActionResult AddCategory()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult AddCategory(Category category) 
+        {
+            _context.tbl_categories.Add(category);
+            _context.SaveChanges();
+            return RedirectToAction("FetchCategory");
+        }
+        public IActionResult UpdateCategory(int id)
+        {
+            var category = _context.tbl_categories.Find(id);
+            return View(category);
+        }
+        [HttpPost]
+        public IActionResult UpdateCategory(Category category) 
+        {
+            _context.tbl_categories.Update(category);
+            _context.SaveChanges();
+            return RedirectToAction("FetchCategory");
+        }
+		public IActionResult DeleteConfirmCategory(int id)
+		{
+			var Detail_Page = _context.tbl_categories.FirstOrDefault(a => a.category_Id == id);
+			return View(Detail_Page);
+		}
+		public IActionResult DeleteCategory(int id) 
+        {
+            var category = _context.tbl_categories.Find(id);
+            _context.tbl_categories.Remove(category);
+            _context.SaveChanges();
+            return RedirectToAction("FetchCategory");
+        }
+
+
+
+        // product related things
+        public IActionResult FetchProduct()
+        {
+            var row = _context.tbl_products.ToList();
+            return View(row);
+        }
+        public IActionResult AddProduct()
+        {
+            List<Category> categories=_context.tbl_categories.ToList();
+            ViewData["category"] = categories;
+            return View();
+        }
+        [HttpPost]
+        public IActionResult AddProduct(Product product,IFormFile Product_Image) 
+        {
+            var PATH = Path.Combine(_environment.WebRootPath, "Product_Image", Product_Image.FileName);
+            FileStream fs = new FileStream(PATH, FileMode.Create);
+            Product_Image.CopyTo(fs);
+            product.Product_Image = Product_Image.FileName;
+            _context.tbl_products.Update(product);
+            _context.SaveChanges();
+            return RedirectToAction("FetchProduct");
+
+        }
+
+    }
 }

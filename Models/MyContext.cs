@@ -16,5 +16,13 @@ namespace ecom.Models
         public DbSet<Faq> tbl_faq { get; set; }
         public DbSet<Feeddback>tbl_feedback { get; set; }
         public DbSet<Product> tbl_products { get; set; }
-    }
+
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
+		{
+            modelBuilder.Entity<Product>() 
+                .HasOne(p => p.Category)
+                .WithMany(c=>c.Products)
+                .HasForeignKey(p=>p.Cart_Id);
+		}
+	}
 }

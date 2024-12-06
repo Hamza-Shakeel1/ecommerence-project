@@ -1,0 +1,41 @@
+﻿@model List<Product>
+<style>
+    td {
+        boder: 2px solid black;
+    }
+</style>
+<link href="~/css/customer.css" rel="stylesheet" />
+<a href="@Url.Action("AddProduct","Admin")" class="btn btn-dark">Add new Category</a>
+<table>
+    <thead>
+    <th>Product Id</th>
+    <th>Product_Name</th>
+    <th>Product_Price</th>
+    <th>Product_Image</th>
+    <th>Options</th>
+    </thead>
+    <tbody>
+        @foreach (var prod in Model)
+        {
+            <tr>
+                <td>@prod.Product_Id</td>
+                <td>@prod.Product_Name</td>
+                <td>@prod.Product_Price</td>
+                
+                <td>
+                    <img src="@Url.Content("~/Product_Image/" + prod.Product_Image)"
+                         style="border: 2px solid black;"
+                         width="350px" height="250px" alt="Alternate Text" />
+
+                </td>   
+
+                <td>
+                    <a href="@Url.Action("ProductDetail","Admin",new{id=prod.Product_Id})" class="btn btn-primary">Detail</a>
+                    <a href="@Url.Action("UpdateProduct","Admin",new{id=prod.Product_Id})" class="btn btn-success">Edit</a>
+                    <a href="@Url.Action("DeleteConfirmProduct","Admin",new{id=prod.Product_Id})" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>

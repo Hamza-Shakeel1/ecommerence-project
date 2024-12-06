@@ -1,0 +1,10 @@
+﻿@model Category
+<div >
+
+	<h4>@Model.category_Id</h4>
+	<h4>@Model.Category_Name</h4>
+
+	<a href="@Url.Action("DeleteCategory", "Admin", new { id = Model.category_Id })" class="btn btn-danger"> Delete</a>
+
+	<a href="@Url.Action("FetchCategory","Admin")" class="btn btn-success bg-dark">Back To List</a>
+</div>
