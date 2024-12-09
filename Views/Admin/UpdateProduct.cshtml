@@ -1,0 +1,33 @@
+﻿@model Product
+
+<form method="post" style="padding: 20px; background-color: #f9f9f9; border: 1px solid #ddd; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+    <input type="hidden" name="Product_Id" value="@Model.Product_Id" />
+
+    <label for="admin_Name" style="font-weight: bold; margin-bottom: 5px; display: block;">Name</label>
+    <input type="text" name="Product_Name" value="@Model.Product_Name" style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 5px; box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);" />
+
+    <label for="admin_Email" style="font-weight: bold; margin-bottom: 5px; display: block;">Price</label>
+    <input type="text" name="Product_Price" value="@Model.Product_Price" style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 5px; box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);" />
+
+    <label for="" style="font-weight: bold; margin-bottom: 5px; display: block;">Description</label>
+    <input type="text" name="Product_Description" value="@Model.Product_Description" style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 5px; box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);" />
+    @Html.Partial("CategoryDropDown", ViewData["category"])
+    <input type="hidden" name="Product_Image" value="@Model.Product_Image" />
+
+    <input type="submit" class="form-control" value="Update Product" style="width: 100%; background-color: #007bff; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;" />
+</form>
+
+    <br />
+<form method="post" asp-action="ChangeProductImage" enctype="multipart/form-data" style="padding: 20px; background-color: #f9f9f9; border: 1px solid #ddd; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+    <input type="hidden" name="Product_Id" value="@Model.Product_Id" />
+    <input type="hidden" name="Product_Name" value="@Model.Product_Name" />
+    <input type="hidden" name="Product_Price" value="//@Model.Product_Price" />
+    <input type="hidden" name="Product_Description" value="@Model.Product_Description" />
+    <input type="hidden" name="Cart_Id" value="@Model.Cart_Id" />
+
+    <label for="Product_Image" style="font-weight: bold; margin-bottom: 5px; display: block;">Upload New Profile Image</label>
+    <input type="file" name="Product_Image" value="" style="margin-bottom: 15px; width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;" />
+    <img src="@Url.Content("~/Product_Image/" + Model.Product_Image)" asp-append-version="true" style="border: 2px solid black;" width="250px" height="250px" alt="Alternate Text" />
+    
+    <input type="submit" value="Change Product Image" style="width: 100%; background-color: #28a745; color: white; padding: 10px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;" />
+</form>

@@ -1,0 +1,13 @@
+﻿@model Product
+<div style="border :2px solid black">
+
+	<h4>@Model.Product_Id</h4>
+	<h4>@Model.Product_Name</h4>
+
+	<div>
+		<img src="@Url.Content("~/Product_Image/" + Model.Product_Image)" asp-append-version="true" style="border: 2px solid black;" width="350px" height="250px" alt="Alternate Text" />
+	</div>
+	<a href="@Url.Action("DeleteProduct","Admin",new{id=Model.Product_Id})" class=" btn btn-danger"> Delete</a>
+	<a href="@Url.Action("FetchProduct","Admin")" class="btn btn-success bg-dark">Back To List</a>
+</div>
+

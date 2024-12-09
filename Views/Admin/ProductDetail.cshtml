@@ -1,0 +1,9 @@
+﻿@model Product
+<h4>@Model.Product_Id</h4>
+<h4>@Model.Product_Name</h4>
+<h4>@Model.Product_Price</h4>
+<h4>@Model.Product_Description</h4>
+<h4>@Model.Category.Category_Name</h4>
+<img src="@Url.Content("~/Product_Image/" + Model.Product_Image)" asp-append-version="true" style="border: 2px solid black;" width="250px" height="250px" alt="Alternate Text" />
+
+     
