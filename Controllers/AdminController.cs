@@ -1,6 +1,7 @@
 ﻿using ecom.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ecom.Controllers
 {
@@ -182,6 +183,53 @@ namespace ecom.Controllers
         {
             var PATH = Path.Combine(_environment.WebRootPath, "Product_Image", Product_Image.FileName);
             FileStream fs = new FileStream(PATH, FileMode.Create);
+            Product_Image.CopyTo(fs);
+            product.Product_Image = Product_Image.FileName;
+            _context.tbl_products.Update(product);
+            _context.SaveChanges();
+            return RedirectToAction("FetchProduct");
+
+        }
+        public IActionResult ProductDetail(int id)
+        {
+            var Detail_Page = _context.tbl_products.Include(p => p.Category).FirstOrDefault(p => p.Product_Id == id);
+            return View(Detail_Page);
+        }
+		public IActionResult DeleteConfirmProduct(int id)
+		{
+			var Detail_Page = _context.tbl_products.FirstOrDefault(a => a.Product_Id == id);
+			return View(Detail_Page);
+		}
+        public IActionResult DeleteProduct(int id)
+        {
+            var category = _context.tbl_products.Find(id);
+            _context.tbl_products.Remove(category);
+            _context.SaveChanges();
+            return RedirectToAction("FetchProduct");
+        }
+        public IActionResult UpdateProduct(int id)
+        {
+
+            List<Category> categories = _context.tbl_categories.ToList();
+            ViewData["category"] = categories;
+
+           
+            var product = _context.tbl_products.Find(id);
+            ViewBag.selectedCategoryId=product.Cart_Id;
+            return View(product);
+        }
+        [HttpPost]
+        public IActionResult UpdateProduct(Product product)
+        {
+            _context.tbl_products.Update(product);
+            _context.SaveChanges();
+            return RedirectToAction("FetchProduct");
+        }
+        [HttpPost]
+        public IActionResult ChangeProductImage(IFormFile Product_Image, Product product)
+        {
+            string ImagePath = Path.Combine(_environment.WebRootPath, "Product_Image", Product_Image.FileName);
+            FileStream fs = new FileStream(ImagePath, FileMode.Create);
             Product_Image.CopyTo(fs);
             product.Product_Image = Product_Image.FileName;
             _context.tbl_products.Update(product);
