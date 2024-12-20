@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- Main Banner -->
+<section class="main-banner">
+    <div class="banner-left">
+        <h1>Welcome to ShopMore</h1>
+        <p>Explore top deals and latest trends.</p>
+        <a href="#" class="btn">Shop Now</a>
+    </div>
+    <div class="banner-right">
+        <img src="banner-image.jpg" alt="Banner">
+    </div>
+</section>
+
+<!-- Categories -->
+<section class="categories">
+    <h2>Browse Categories</h2>
+    <div class="category-list">
+        
+       
+         @Html.Partial("PartialCategoryDiv",ViewData["Category"])
+        <!--<div class="category-item">Electronics</div>
+        <div class="category-item">Gaming</div>
+        <div class="category-item">Fashion</div>
+        <div class="category-item">Home & Living</div>
+        <div class="category-item">Accessories</div>-->
+    </div>
+</section>
+
+<!-- Promotions -->
+<section class="promotions">
+    <div class="promo-item">
+        <img src="~/images/Official_Tekken_7_Logo.jpg" alt="Promo 1">
+        <p>Up to 50% off Electronics</p>
+        <a href="#" class="btn">Shop Now</a>
+    </div>
+    <div class="promo-item">
+        <img src="" alt="Promo 2">
+        <p>Latest Fashion Trends</p>
+        <a href="#" class="btn">Explore</a>
+    </div>
+    <div class="promo-item">
+        <img src="promo3.jpg" alt="Promo 3">
+        <p>Exclusive Home Deals</p>
+        <a href="#" class="btn">Discover</a>
+    </div>
+</section>
+
